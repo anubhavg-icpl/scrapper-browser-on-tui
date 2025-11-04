@@ -1,0 +1,16 @@
+{
+  "name": "hn-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@lightpanda/browser": "^1.0.1",
+    "puppeteer-core": "^24.26.1"
+  }
+}
