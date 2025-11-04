@@ -73,9 +73,29 @@ class HNScraper {
     // Start local Lightpanda browser process
     this.localProcess = await lightpanda.serve(lpdopts);
 
-    this.browser = await puppeteer.connect({
-      browserWSEndpoint,
-    });
+    // Wait for the browser to be ready (give it a moment to start)
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // Retry connection with exponential backoff
+    let retries = 5;
+    let delay = 500;
+
+    while (retries > 0) {
+      try {
+        this.browser = await puppeteer.connect({
+          browserWSEndpoint,
+        });
+        break;
+      } catch (error) {
+        retries--;
+        if (retries === 0) {
+          throw error;
+        }
+        logger.warn(`Connection failed, retrying... (${retries} attempts left)`, { delay });
+        await new Promise(resolve => setTimeout(resolve, delay));
+        delay *= 2;
+      }
+    }
   }
 
   /**
