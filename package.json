@@ -1,16 +1,43 @@
 {
   "name": "hn-scraper",
   "version": "1.0.0",
-  "description": "",
-  "license": "ISC",
+  "description": "Production-ready HackerNews scraper using Lightpanda headless browser",
+  "license": "MIT",
   "author": "",
   "type": "commonjs",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "src/index.js",
+  "bin": {
+    "hn-scraper": "./src/cli.js"
   },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js",
+    "scrape": "node src/cli.js",
+    "scrape:cloud": "USE_CLOUD=true node src/cli.js",
+    "scrape:local": "node src/cli.js --local",
+    "example:basic": "node examples/basic-search.js",
+    "example:custom": "node examples/custom-scraper.js",
+    "test": "echo \"Tests not yet implemented\" && exit 0",
+    "lint": "echo \"Linting not yet configured\" && exit 0"
+  },
+  "keywords": [
+    "hackernews",
+    "scraper",
+    "web-scraping",
+    "lightpanda",
+    "puppeteer",
+    "headless-browser"
+  ],
   "dependencies": {
     "@lightpanda/browser": "^1.0.1",
+    "dotenv": "^16.6.1",
     "puppeteer-core": "^24.26.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anubhavg-icpl/scrapper-browser-on-tui.git"
   }
 }

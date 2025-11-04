@@ -30,3 +30,6 @@ logs/
 dist/
 build/
 coverage/
+
+# Old examples
+examples-old/
